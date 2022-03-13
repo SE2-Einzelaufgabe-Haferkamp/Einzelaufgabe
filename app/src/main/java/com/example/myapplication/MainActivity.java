@@ -64,14 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Network verbindung = new Network(mat.getText().toString());
                 verbindung.start();
-
                 try {
                     verbindung.join();
-
                 }catch (Exception e){
                     e.getStackTrace();
                 }
-
                 rueckgabe.setText(verbindung.returnAnswer());
             }
         });
@@ -84,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
-
 
 }

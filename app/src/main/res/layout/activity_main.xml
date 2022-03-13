@@ -45,12 +45,12 @@
 
     <EditText
         android:id="@+id/inputUserMatrikelnr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="283dp"
+        android:layout_height="70dp"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="235dp" />
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="236dp" />
 
     <TextView
         android:id="@+id/serverAntwortText"
