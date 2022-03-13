@@ -5,12 +5,16 @@ import static java.lang.Integer.parseInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView rueckgabe=findViewById(R.id.serverAntwortText);
+    Button send=findViewById(R.id.sendButton);
+    Button calculate=findViewById(R.id.calculateButton);
+    EditText mat=findViewById(R.id.inputUserMatrikelnr);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
