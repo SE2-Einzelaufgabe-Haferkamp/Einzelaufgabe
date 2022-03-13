@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -13,75 +15,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);}
 
-        Button b = findViewById(R.id.sendButton);
-        Button berechnen = findViewById(R.id.calculateButton);
-        TextView serverAnswer = findViewById(R.id.serverAntwort);
-        EditText inputNumber = findViewById(R.id.editTextNumber);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                serverAnswer.setVisibility(View.VISIBLE);
-                String matrikelnummer = inputNumber.getText().toString();
-                Connection con = new Connection(matrikelnummer);
-
-                con.start();
-                try {
-                    con.join();
-                } catch (InterruptedException e) {
-                }
-
-                serverAnswer.setText(con.getAnswer());
+    public static String alternierendeQuersumme(String mat){
+        if(mat==null || mat.length()==0){
+            return "Matrinkelnummer ungültig!";
+        }
+        if(mat.length()==8){
+            int matrikelnr=parseInt(mat,10);
+            int gerade=0;
+            int ungerade=0;
+            int [] array= new int[mat.length()];
+            for(int i=0; i<array.length; i++){
+                array[i]=matrikelnr%10;
+                matrikelnr=matrikelnr/10;
             }
-
-        });
-        berechnen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                serverAnswer.setVisibility(View.VISIBLE);
-                String matrikelnummer = inputNumber.getText().toString();
-                Connection con = new Connection(matrikelnummer);
-
-                con.start();
-                try {
-                    con.join();
-                } catch (InterruptedException e) {
-                }
-                if(!con.getAnswer().equals("Dies ist keine gueltige Matrikelnummer")){
-                    berechnen(matrikelnummer);
+            for(int i=0; i<array.length; i++){
+                if(i==0 || i%2==0){
+                    gerade=gerade+array[i];
                 }
                 else{
-                    serverAnswer.setText("Das ist keine Matrikelnummer");
+                    ungerade=ungerade+array[i];
                 }
             }
-        });
-    }
-    public void berechnen(String matNr) {
-        int firstSum = 0;
-        int secondSum = 0;
-        int[] numbers = new int[matNr.length()];
-        char[] c = matNr.toCharArray();
-
-        for (int i = 0; i < matNr.length(); i++) {
-            numbers[i] = (int) c[i]-48;
-        }
-        for (int i = 0; i < numbers.length; i++) {
-            if (i % 2 == 0) {
-                firstSum += numbers[i];
-            } else {
-                secondSum += numbers[i];
+            int ergebnis = gerade - ungerade;
+            if(ergebnis%2==0){
+                return "Alternierende Quersumme = "+ergebnis+" (gerade)";
+            }
+            else{
+                return "Alternierende Quersumme = "+ergebnis+" (ungerade)";
             }
         }
-        int alternierendeQuersumme = firstSum-secondSum;
-        if(alternierendeQuersumme%2==0){
-            serverAnswer.setText("GERADE");
-        }
-        else{
-            serverAnswer.setText("UNGERADE");
-        }
-
+        return "Matrinkelnummer ungültig!";
     }
+
 
 }
