@@ -5,23 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BED8E6"
+    android:backgroundTint="#C5E1DE"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="413dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:background="#017A6F"
         android:text=" Network Test"
         android:textColor="#E6F1F0"
         android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/sendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#B6B6B6"
@@ -30,35 +30,50 @@
         android:textColor="#000000"
         app:iconTint="#000000"
         app:rippleColor="@color/black"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="341dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="414dp"
-        android:layout_height="18dp"
-        android:background="#003E38"
-        android:text=" "
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="-2dp" />
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="418dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="274dp"
         android:layout_height="34dp"
-        android:text="Gib deine Matrikelnummer ein"
+        android:text="Gib deine Matrikelnummer ein:"
         android:textColor="#000000"
         android:textSize="20sp"
         tools:layout_editor_absoluteX="68dp"
         tools:layout_editor_absoluteY="202dp" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword"
+        android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberPassword"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="236dp" />
+        android:inputType="number"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="235dp" />
+
+    <TextView
+        android:id="@+id/serverAntwort"
+        android:layout_width="233dp"
+        android:layout_height="52dp"
+        android:accessibilityLiveRegion="assertive"
+        android:layoutDirection="inherit"
+        android:text="                     Server Antwort"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="341dp" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#686868"
+        android:backgroundTint="#4E5958"
+        android:backgroundTintMode="add"
+        android:foregroundTint="#D6CDCD"
+        android:text="Calculate"
+        app:iconTint="#514F4F"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="545dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

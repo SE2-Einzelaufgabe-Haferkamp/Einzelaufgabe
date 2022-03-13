@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button b = findViewById(R.id.button);
-        Button berechnen = findViewById(R.id.button2);
-        TextView serverAnswer = findViewById(R.id.textView);
+        Button b = findViewById(R.id.sendButton);
+        Button berechnen = findViewById(R.id.calculateButton);
+        TextView serverAnswer = findViewById(R.id.serverAntwort);
         EditText inputNumber = findViewById(R.id.editTextNumber);
 
         b.setOnClickListener(new View.OnClickListener() {

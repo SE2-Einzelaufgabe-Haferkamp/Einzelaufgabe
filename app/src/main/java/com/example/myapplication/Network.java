@@ -37,6 +37,8 @@ public class Network extends Thread{
         }
     }
 
+    public static void main(String[] args) {
 
+    }
 
 }
