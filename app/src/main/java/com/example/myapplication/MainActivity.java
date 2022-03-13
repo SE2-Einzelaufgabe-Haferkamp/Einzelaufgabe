@@ -5,21 +5,13 @@ import static java.lang.Integer.parseInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView rueckgabe=findViewById(R.id.serverAntwortText);
-    Button send=findViewById(R.id.sendButton);
-    Button calculate=findViewById(R.id.calculateButton);
-    EditText mat=findViewById(R.id.inputUserMatrikelnr);
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);}
 
     public static String alternierendeQuersumme(String mat){
         if(mat==null || mat.length()==0){
@@ -51,6 +43,48 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return "Matrinkelnummer ungültig!";
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView rueckgabe=findViewById(R.id.serverAntwortText);
+        Button send=findViewById(R.id.sendButton);
+        Button calculate=findViewById(R.id.calculateButton);
+        EditText mat=findViewById(R.id.inputUserMatrikelnr);
+
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Network verbindung = new Network(mat.getText().toString());
+                verbindung.start();
+
+                try {
+                    verbindung.join();
+
+                }catch (Exception e){
+                    e.getStackTrace();
+                }
+
+                rueckgabe.setText(verbindung.returnAnswer());
+            }
+        });
+
+
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rueckgabe.setText(alternierendeQuersumme(mat.getText().toString()));
+            }
+        });
+
+
     }
 
 
